@@ -4,3 +4,46 @@
 [![Maintainability](https://api.codeclimate.com/v1/badges/967ee21b11d6972d342a/maintainability)](https://codeclimate.com/github/meyfa/mime-stream/maintainability)
 
 Node pass-through stream for MIME type detection.
+
+## Install
+
+```
+npm install --save measure-stream
+```
+
+## Usage
+
+### Event: 'type'
+
+This event is emitted as soon as the type is detected. If the type remains
+unknown, `null` is passed to the event handler instead of an object.
+
+It is guaranteed that there is always exactly one `type` event emitted, even
+when the stream is closed prematurely.
+
+Example:
+
+```javascript
+const MimeStream = require("mime-stream");
+
+let stream = new MimeStream();
+stream.on("type", function (type) {
+    console.log(type); // { ext: "png", mime: "image/png" }
+});
+
+fs.createReadStream("myimage.png").pipe(stream);
+```
+
+You could also add more `.pipe()` calls to the chain. `MimeStream` is
+non-destructive and passes on any data it receives.
+
+### Property
+
+After detection, the detection result is also available inside the `type`
+property. Example:
+
+```javascript
+stream.on("end", function () {
+    console.log(stream.type); // { ext: "png", mime: "image/png" }
+});
+```
