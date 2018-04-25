@@ -81,4 +81,12 @@ describe("MimeStream", function () {
         data.pipe(obj);
     });
 
+    it("should bind the listener argument", function (done) {
+        const data = fs.createReadStream(path.join(__dirname, "png.png"));
+        data.pipe(new MimeStream(function (type) {
+            expect(type).to.to.deep.equal({ ext: "png", mime: "image/png" });
+            done();
+        }));
+    });
+
 });

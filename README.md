@@ -24,6 +24,7 @@ when the stream is closed prematurely.
 Example:
 
 ```javascript
+const fs = require("fs");
 const MimeStream = require("mime-stream");
 
 let stream = new MimeStream();
@@ -36,6 +37,23 @@ fs.createReadStream("myimage.png").pipe(stream);
 
 You could also add more `.pipe()` calls to the chain. `MimeStream` is
 non-destructive and passes on any data it receives.
+
+### Listener Function
+
+This is the same as binding a function to the `type` event, just more
+concise.
+
+Example:
+
+```javascript
+const fs = require("fs");
+const MimeStream = require("mime-stream");
+
+// `new` is optional anyway
+fs.createReadStream("myimage.png").pipe(MimeStream((type) => {
+    console.log(type); // { ext: "png", mime: "image/png" }
+}));
+```
 
 ### Property
 
