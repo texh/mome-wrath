@@ -18,8 +18,13 @@ const fileType = require("file-type");
  * When the type is unknown or could not be detected (stream closed too early),
  * null is given instead of the event object.
  */
-function MimeStream(options) {
-    Transform.call(this, options);
+function MimeStream() {
+    // return new instance when invoked as function
+    if (!(this instanceof MimeStream)) {
+        return new MimeStream();
+    }
+    // super()
+    Transform.call(this);
 
     this.type = null;
 

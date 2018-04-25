@@ -9,6 +9,10 @@ const MimeStream = require("../index.js");
 
 describe("MimeStream", function () {
 
+    it("should construct when invoked as a function", function () {
+        expect(MimeStream()).to.be.instanceof(MimeStream);
+    });
+
     it("should pass through all chunks unmodified", function () {
         const obj = new MimeStream();
 
@@ -24,7 +28,6 @@ describe("MimeStream", function () {
         const expected = Buffer.from("hello world!", "utf8");
         expect(target.read()).to.satisfy((bytes) => bytes.equals(expected));
     });
-
 
     it("should emit 'type' with null when closed too early", function (done) {
         const obj = new MimeStream();
