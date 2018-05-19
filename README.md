@@ -8,7 +8,7 @@ Node pass-through stream for MIME type detection.
 ## Install
 
 ```
-npm install --save measure-stream
+npm install --save mime-stream
 ```
 
 ## Usage
