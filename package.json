@@ -4,7 +4,8 @@
   "description": "Pass-through stream for MIME type detection",
   "main": "index.js",
   "scripts": {
-    "test": "node_modules/.bin/mocha"
+    "test": "mocha --recursive",
+    "coverage": "nyc --reporter=lcov mocha --recursive"
   },
   "repository": {
     "type": "git",
@@ -26,7 +27,8 @@
   "homepage": "https://github.com/meyfa/mime-stream",
   "devDependencies": {
     "chai": "^4.1.2",
-    "mocha": "^5.1.1"
+    "mocha": "^5.1.1",
+    "nyc": "^11.8.0"
   },
   "dependencies": {
     "file-type": "^7.6.0"

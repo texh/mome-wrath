@@ -69,6 +69,22 @@ describe("MimeStream", function () {
         data.pipe(obj);
     });
 
+    it("should emit 'type' only once", function (done) {
+        const obj = new MimeStream();
+
+        obj.on("type", function (type) {
+            expect(type).to.to.deep.equal({ ext: "png", mime: "image/png" });
+            done();
+        });
+
+        const data = fs.createReadStream(path.join(__dirname, "png.png"), {
+            // pass each byte separately so that there is plenty of opportunity
+            // for type detection
+            highWaterMark: 1,
+        });
+        data.pipe(obj);
+    });
+
     it("should set 'type' property after detection", function (done) {
         const obj = new MimeStream();
 
