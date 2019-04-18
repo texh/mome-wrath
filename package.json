@@ -1,7 +1,7 @@
 {
-  "name": "mime-stream",
-  "version": "1.0.1",
-  "description": "Pass-through stream for MIME type detection",
+  "name": "mome-wrath",
+  "version": "0.0.1",
+  "description": "Pass-through stream for MIME type detection using mmmagic",
   "main": "index.js",
   "scripts": {
     "test": "mocha --recursive",
@@ -9,28 +9,29 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/meyfa/mime-stream.git"
+    "url": "git+https://github.com/texh/mome-wrath.git"
   },
   "keywords": [
     "stream",
     "streams",
     "mime",
     "type",
+    "mmmagic",
     "file",
     "through"
   ],
-  "author": "Fabian Meyer",
+  "author": "Jarrod Linahan",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/meyfa/mime-stream/issues"
+    "url": "https://github.com/texh/mome-wrath/issues"
   },
-  "homepage": "https://github.com/meyfa/mime-stream",
+  "homepage": "https://github.com/texh/mome-wrath",
   "devDependencies": {
     "chai": "^4.1.2",
     "mocha": "^5.1.1",
     "nyc": "^11.8.0"
   },
   "dependencies": {
-    "file-type": "^7.6.0"
+    "mmmagic": "^0.5.2"
   }
 }
